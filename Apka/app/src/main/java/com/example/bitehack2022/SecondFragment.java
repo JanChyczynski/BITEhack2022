@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.GridLayout;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -29,11 +30,9 @@ public class SecondFragment extends Fragment {
 
         for (int i = 0; i < 5; i++) {
             Button btn = new Button(getActivity());
-//            ConstraintLayout.LayoutParams lp = new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT);
-//            btn.setLayoutParams(lp);
-//            btn.setGravity(Gravity.CENTER_HORIZONTAL);
+            btn.setGravity(Gravity.CENTER_HORIZONTAL);
             btn.setText("blefs"+Integer.toString(i));
-            binding.getRoot().addView(btn);
+            binding.favoritesGrid.addView(btn);
         }
 
 
