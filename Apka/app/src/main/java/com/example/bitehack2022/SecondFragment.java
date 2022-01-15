@@ -22,6 +22,7 @@ import com.google.android.material.snackbar.Snackbar;
 public class SecondFragment extends Fragment {
 
     private FragmentSecondBinding binding;
+    private Storage storage;
 
     @Override
     public View onCreateView(
@@ -30,16 +31,19 @@ public class SecondFragment extends Fragment {
     ) {
         binding = FragmentSecondBinding.inflate(inflater, container, false);
 
+        storage = ((MainActivity) getActivity()).storage;
 
+        for (Product product : storage.getProducts())
+        {
 
-
+        }
 
         for (int i = 0; i < 5; i++) {
             LinearLayout layout = new LinearLayout(getActivity());
             layout.setOrientation(LinearLayout.VERTICAL);
 
             TextView textView = new TextView(getActivity());
-            textView.setText("foo");
+            textView.setText(storage.getAccessToken());
             layout.addView(textView);
 
             Button btn = new Button(getActivity());
