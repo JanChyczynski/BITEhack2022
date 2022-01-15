@@ -11,6 +11,7 @@ public class ApiProxy {
     }
 
     public String getNewFridgeToken(){
+
         return "mocked";
     }
 
