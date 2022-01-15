@@ -3,6 +3,7 @@ package com.example.bitehack2022;
 import junit.framework.TestCase;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class StorageTest extends TestCase {
@@ -17,8 +18,8 @@ public class StorageTest extends TestCase {
         int productsNumber = 3;
         List<Product> products = new ArrayList<>();
         for (int i = 0; i < productsNumber; i++) {
-            Product product = new Product("22-11-2022");
 
+            Product product = new Product(new Date(2022,12,30));
             products.add(product);
             storage.addProduct(product);
         }
