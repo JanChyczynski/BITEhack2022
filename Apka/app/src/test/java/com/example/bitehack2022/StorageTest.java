@@ -17,11 +17,19 @@ public class StorageTest extends TestCase {
         int productsNumber = 3;
         List<Product> products = new ArrayList<>();
         for (int i = 0; i < productsNumber; i++) {
-            Product product = new Product();
+            Product product = new Product("22-11-2022");
+
             products.add(product);
             storage.addProduct(product);
         }
         assertEquals (productsNumber, storage.getProducts().size());
 
+
+        for(Product product : products){
+            storage.removeProduct(product);
+            assertFalse(storage.getProducts().contains(product));
+        }
+
+        assertTrue(storage.getProducts().isEmpty());
     }
 }
