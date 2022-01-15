@@ -1,0 +1,14 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  api:
+    build: .
+    command: npm run start
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./data:/usr/data
+    environment:
+      - PORT=9000
+
+volumes:
+  data: {}

@@ -22,10 +22,10 @@ interface Db {
 	fridge: Fridge[]
 }
 
-const db: Db = JSON.parse(fs.readFileSync('./db.json').toString())
+const db: Db = JSON.parse(fs.readFileSync('./data/db.json').toString())
 
 const unique = () => uuid().slice(0, 6)
-const save = () => new Promise(resolve => fs.writeFile('./db.json', JSON.stringify(db, null, 2), resolve))
+const save = () => new Promise(resolve => fs.writeFile('./data/db.json', JSON.stringify(db, null, 2), resolve))
 
 export const addFridge = async (): Promise<Id> => {
     const id = unique()

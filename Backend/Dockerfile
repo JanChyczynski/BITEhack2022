@@ -6,12 +6,6 @@ COPY package.json ./
 
 COPY tsconfig.json ./
 
+RUN npm install --quiet
+
 COPY src ./src
-
-RUN ls -a
-
-RUN npm install
-
-EXPOSE 9000
-
-CMD ["npm","run","dev"]

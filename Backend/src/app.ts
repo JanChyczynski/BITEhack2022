@@ -3,7 +3,7 @@ import bodyParser, { urlencoded } from 'body-parser'
 import * as db from './db'
 
 const app = express()
-const port = 9000
+const port = Number(process.env.PORT)
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
