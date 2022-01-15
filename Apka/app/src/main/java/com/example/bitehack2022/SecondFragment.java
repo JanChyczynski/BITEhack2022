@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -28,11 +30,24 @@ public class SecondFragment extends Fragment {
     ) {
         binding = FragmentSecondBinding.inflate(inflater, container, false);
 
+
+
+
+
         for (int i = 0; i < 5; i++) {
+            LinearLayout layout = new LinearLayout(getActivity());
+            layout.setOrientation(LinearLayout.VERTICAL);
+
+            TextView textView = new TextView(getActivity());
+            textView.setText("foo");
+            layout.addView(textView);
+
             Button btn = new Button(getActivity());
             btn.setGravity(Gravity.CENTER_HORIZONTAL);
             btn.setText("blefs"+Integer.toString(i));
-            binding.favoritesGrid.addView(btn);
+            layout.addView(btn);
+
+            binding.favoritesGrid.addView(layout);
         }
 
 
@@ -44,14 +59,14 @@ public class SecondFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                NavHostFragment.findNavController(SecondFragment.this)
-//                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
-                Log.d("TAGGG", "msg");
-            }
-        });
+//        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+////                NavHostFragment.findNavController(SecondFragment.this)
+////                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
+//                Log.d("TAGGG", "msg");
+//            }
+//        });
 
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
