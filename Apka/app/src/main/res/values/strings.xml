@@ -13,4 +13,6 @@
     <string name="cell_1">Cell 1</string>
     <string name="cell_2">Cell 2</string>
     <string name="cell_3">Cell 3</string>
+    <string name="cell_11">cell_11</string>
+    <string name="cell_21">cell_21</string>
 </resources>
