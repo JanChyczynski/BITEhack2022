@@ -8,8 +8,8 @@ import java.util.Set;
 
 public class Storage {
 
-    private final static String DOMAIN = "https://wilga.pw:9000"; //mocked
-
+//    private final static String DOMAIN = "https://wilga.pw:9000"; //mocked
+    private final static String DOMAIN = "http:192.168.3.56:9000";
     private final ApiProxy apiProxy;
     private String accessToken;
 
@@ -18,15 +18,7 @@ public class Storage {
 //    private List<Product> productsRemoveQueue;
 
     public Storage() {
-//        productsCache = new HashSet<>();
-
-        // mock
         productsCache = new HashSet<>();
-        for (int i = 0; i < 5; i++) {
-            Product p = new Product(new Date(122, 1, 16+i), null);
-            productsCache.add(p);
-        }
-
         apiProxy = new ApiProxy(DOMAIN);
     }
 
