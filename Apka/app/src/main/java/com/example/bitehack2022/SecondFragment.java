@@ -103,6 +103,13 @@ public class SecondFragment extends Fragment {
             btn2.setTextSize((float) 10.0);
             buttonLayout.addView(btn2);
             layout.addView(buttonLayout);
+            btn2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    storage.removeProduct(product);
+                    binding.favoritesGrid.removeView(layout);
+                }
+            });
             binding.favoritesGrid.addView(layout);
         }
 
