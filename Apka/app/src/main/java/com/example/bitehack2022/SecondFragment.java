@@ -45,6 +45,7 @@ public class SecondFragment extends Fragment {
             layout.setOrientation(LinearLayout.VERTICAL);
 
             ImageView imageView = new ImageView(getActivity());
+            imageView.setImageBitmap(product.getBitmap());
             layout.addView(imageView);
 
             TextView textView = new TextView(getActivity());

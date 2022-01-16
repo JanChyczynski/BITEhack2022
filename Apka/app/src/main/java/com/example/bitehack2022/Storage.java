@@ -23,7 +23,7 @@ public class Storage {
         // mock
         productsCache = new HashSet<>();
         for (int i = 0; i < 5; i++) {
-            Product p = new Product(new Date(122, 1, 16+i));
+            Product p = new Product(new Date(122, 1, 16+i), null);
             productsCache.add(p);
         }
 
