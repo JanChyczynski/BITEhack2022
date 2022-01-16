@@ -1,6 +1,9 @@
 package com.example.bitehack2022;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -22,10 +25,10 @@ public class Storage {
 
         // mock
         productsCache = new HashSet<>();
-        for (int i = 0; i < 5; i++) {
-            Product p = new Product(new Date(122, 1, 16+i), null);
-            productsCache.add(p);
-        }
+//        for (int i = 0; i < 5; i++) {
+//            Product p = new Product(new Date(122, 1, 16+i), null);
+//            productsCache.add(p);
+//        }
 
         apiProxy = new ApiProxy(DOMAIN);
     }
@@ -41,8 +44,11 @@ public class Storage {
 
     public List<Product> getProducts(){
 //        apiProxy.getProducts();
-
-        return new ArrayList<>(productsCache);
+        ArrayList<Product> products = new ArrayList<>(productsCache);
+        Collections.sort(products, new ProductComparator());
+//        Collections.sort(products, Comparator.comparing(Product::getDaysToExpire).thenComparing(Product::hashCode)));
+//        products.sort(Comparator.comparing(Product::getDaysToExpire).thenComparing(Product::hashCode));
+        return products;
     }
 
     public boolean logToFridge(String newAccessToken){
