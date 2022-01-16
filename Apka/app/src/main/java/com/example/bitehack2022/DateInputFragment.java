@@ -27,32 +27,35 @@ public class DateInputFragment extends Fragment {
         // Required empty public constructor
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        Log.d("hejAdam","siema2");
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        Log.d("hejAdam","siema1");
-        super.onViewCreated(view, savedInstanceState);
-        binding.buttonAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(DateInputFragment.this)
-                        .navigate(R.id.action_DateInputFragment_to_SecondFragment);
-            }
-        });
-
-    }
+//    @Override
+//    public void onCreate(Bundle savedInstanceState) {
+//        Log.d("hejAdam","siema0");
+//        super.onCreate(savedInstanceState);
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.d("hejAdam","siema");
+        Log.d("hejAdam","siema1");
         binding = FragmentDateInputBinding.inflate(inflater, container, false);
 
-        return inflater.inflate(R.layout.fragment_date_input, container, false);
+        return binding.getRoot();
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Log.d("hejAdam","siema2");
+
+        binding.buttonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("hejAdam", "siema3");
+                NavHostFragment.findNavController(DateInputFragment.this)
+                        .navigate(R.id.action_DateInputFragment_to_SecondFragment);
+            }
+        });
+    }
+
+
 }
