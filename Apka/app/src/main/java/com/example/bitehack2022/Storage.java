@@ -36,9 +36,9 @@ public class Storage {
         return new ArrayList<>(productsCache);
     }
 
-    public List<Product> logToFridge(String newAccessToken){
+    public boolean logToFridge(String newAccessToken){
         accessToken = newAccessToken;
-        return getProducts();
+        return true;
     }
 
     public void addProduct(Product product){
