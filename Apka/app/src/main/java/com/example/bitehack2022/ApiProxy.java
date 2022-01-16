@@ -4,8 +4,8 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Future;
 
-import okhttp3.OkHttpClient;
 
 public class ApiProxy {
     private static String TAG = "ApiProxyTAG";
@@ -15,7 +15,8 @@ public class ApiProxy {
         this.domain = domain;
     }
 
-    public String getNewFridgeToken(){
+    public Future<String> getNewFridgeToken(){
+        Log.d(TAG, "");
         HttpRequestHandler handler = new HttpRequestHandler();
         try {
             String reply = handler.post("domain"+"/add-fridge", "");
@@ -25,11 +26,10 @@ public class ApiProxy {
             Log.e(TAG, "error :((((");
             return null;
         }
-
     }
 
-    public List<Product> getProducts(){
-        return new ArrayList<>(); //mocked
+    public Future<List<Product>> getProducts(){
+        return new Future(ArrayList<>()); //mocked
     }
 
     public void putProduct(Product product){

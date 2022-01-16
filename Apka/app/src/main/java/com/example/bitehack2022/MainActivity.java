@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     public Storage storage;
     public Bitmap bitmap;
+    public String response;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

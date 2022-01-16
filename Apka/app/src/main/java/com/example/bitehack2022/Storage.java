@@ -27,7 +27,7 @@ public class Storage {
     }
 
     public String registerFridge(){
-        this.accessToken = apiProxy.getNewFridgeToken();
+        this.accessToken = apiProxy.getNewFridgeToken().get();
         return this.accessToken;
     }
 
