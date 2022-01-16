@@ -55,8 +55,7 @@ public class Storage {
         Log.i("DEBUGTAG", root.toString());
 
         for (int i = 0; i< 4; i++) {
-            InputStream = c.getResources().openRawResource(R.)
-            Bitmap bmp =
+            Bitmap bmp = null;
             Date date = new Date(122, 1, 15+2*i);
             Product product = new Product(date, bmp);
             addProduct(product);
