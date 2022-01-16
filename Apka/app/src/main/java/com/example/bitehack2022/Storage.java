@@ -1,5 +1,12 @@
 package com.example.bitehack2022;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Environment;
+import android.util.Log;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -40,6 +47,20 @@ public class Storage {
     public boolean logToFridge(String newAccessToken) {
         accessToken = newAccessToken;
         return true;
+    }
+
+    public void loadMockProducts(Context c) {
+
+        File root = Environment.getExternalStorageDirectory();
+        Log.i("DEBUGTAG", root.toString());
+
+        for (int i = 0; i< 4; i++) {
+            Bitmap bmp = null;
+            Date date = new Date(122, 1, 15+2*i);
+            Product product = new Product(date, bmp);
+            addProduct(product);
+        }
+
     }
 
     public void addProduct(Product product) {
