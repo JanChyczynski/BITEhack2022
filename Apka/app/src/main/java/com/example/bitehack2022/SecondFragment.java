@@ -50,16 +50,18 @@ public class SecondFragment extends Fragment {
     }
 
 
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Activity.RESULT_OK && requestCode == CAMERA_PERMISSION_CODE){
+        if (resultCode == Activity.RESULT_OK && requestCode == CAMERA_PERMISSION_CODE) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             ImageView imageView = new ImageView(getActivity());
             imageView.setImageBitmap(imageBitmap);
             binding.favoritesGrid.addView(imageView);
+            NavHostFragment.findNavController(SecondFragment.this)
+                    .navigate(R.id.action_SecondFragment_to_DateInputFragment);
+
         }
     }
 
