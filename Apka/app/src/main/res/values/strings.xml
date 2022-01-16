@@ -4,6 +4,7 @@
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
+    <string name="date_input_label">Date Input Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
@@ -15,4 +16,14 @@
     <string name="cell_3">Cell 3</string>
     <string name="cell_11">cell_11</string>
     <string name="cell_21">cell_21</string>
+    <string name="taf">Taf</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_year_ploxuuuu">Enter year ploxuuuu</string>
+    <string name="create_new_fridge">Create new Fridge</string>
+    <string name="enter_month_ploxuuuu" />
+    <string name="enter_day_ploxuuuu" />
+    <string name="enter_month">enter_month_uwu</string>
+    <string name="enter_day_OwO">enter_day_OwO</string>
+    <string name="add_to_fridge">Add to the Fridge!</string>
 </resources>
