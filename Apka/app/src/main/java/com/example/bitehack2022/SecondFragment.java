@@ -1,5 +1,6 @@
 package com.example.bitehack2022;
 
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 
 import android.app.Activity;
@@ -7,7 +8,9 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.provider.MediaStore;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,24 +42,39 @@ public class SecondFragment extends Fragment {
         storage = ((MainActivity) getActivity()).storage;
 
         Log.d("BLETAG", "przed petla");
-        Log.d("BLETAG", "liczba produktów: "+storage.getProducts().size());
+        Log.d("BLETAG", "liczba produktów: " + storage.getProducts().size());
 
-        for (Product product : storage.getProducts())
-        {
+        for (Product product : storage.getProducts()) {
             LinearLayout layout = new LinearLayout(getActivity());
             layout.setOrientation(LinearLayout.VERTICAL);
 
             ImageView imageView = new ImageView(getActivity());
             imageView.setImageBitmap(product.getBitmap());
+            DisplayMetrics displayMetrics = new DisplayMetrics();
+            getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+            imageView.setMinimumWidth(displayMetrics.widthPixels/4);
+            imageView.setMinimumHeight(displayMetrics.heightPixels/4);
             layout.addView(imageView);
+            layout.setPadding((displayMetrics.widthPixels/4-20)/6,(displayMetrics.heightPixels/4-20)/6,0,0);
+            layout.setGravity(Gravity.CENTER_HORIZONTAL);
+
+            LinearLayout textLayout = new LinearLayout(getActivity());
+            textLayout.setOrientation(LinearLayout.VERTICAL);
+
+            TextView textView1 = new TextView(getActivity());
+            textView1.setText("Will spoil");
+            textView1.setGravity(Gravity.CENTER_HORIZONTAL);
+            textLayout.addView(textView1);
 
             TextView textView = new TextView(getActivity());
-            String month = Integer.toString(product.getExpirationDate().getMonth());
-            String date = Integer.toString(product.getExpirationDate().getDate());
-            textView.setText(date+"."+month);
-            layout.addView(textView);
+            textView.setText(product.getDaysToExpireString());
+            textView.setGravity(Gravity.CENTER_HORIZONTAL);
+            textLayout.addView(textView);
 
+            layout.addView(textLayout);
 
+            LinearLayout buttonLayout = new LinearLayout(getActivity());
+            buttonLayout.setOrientation(LinearLayout.VERTICAL);
             Button btn1 = new Button(getActivity());
             btn1.setText("Open");
             btn1.setOnClickListener(new View.OnClickListener() {
@@ -70,11 +88,16 @@ public class SecondFragment extends Fragment {
                     }
                 }
             });
-            layout.addView(btn1);
+            btn1.setMaxWidth(displayMetrics.widthPixels/8);
+            btn1.setTextSize((float) 10.0);
+            buttonLayout.addView(btn1);
 
             Button btn2 = new Button(getActivity());
             btn2.setText("remove");
-            layout.addView(btn2);
+            btn2.setMaxWidth(displayMetrics.widthPixels/8);
+            btn2.setTextSize((float) 10.0);
+            buttonLayout.addView(btn2);
+            layout.addView(buttonLayout);
             binding.favoritesGrid.addView(layout);
         }
 
@@ -105,7 +128,7 @@ public class SecondFragment extends Fragment {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
 
-            ((MainActivity)getActivity()).bitmap = (Bitmap) extras.get("data");
+            ((MainActivity) getActivity()).bitmap = (Bitmap) extras.get("data");
             NavHostFragment.findNavController(SecondFragment.this)
                     .navigate(R.id.action_SecondFragment_to_DateInputFragment);
         }

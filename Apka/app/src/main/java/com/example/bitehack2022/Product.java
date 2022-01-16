@@ -47,6 +47,17 @@ public class Product {
         return daysToExpire;
     }
 
+    public String getDaysToExpireString(){
+        if (getDaysToExpire()==0){
+            return "today!";
+        }
+        if (getDaysToExpire()==1){
+            return "tomorrow";
+        }
+        return "in "+getDaysToExpire()+" days";
+    }
+
+
     public Date getExpirationDate() {
         return expirationDate;
     }

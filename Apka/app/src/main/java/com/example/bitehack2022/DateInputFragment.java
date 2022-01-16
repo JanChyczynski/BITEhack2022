@@ -33,7 +33,6 @@ public class DateInputFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.d("hejAdam","siema1");
         binding = FragmentDateInputBinding.inflate(inflater, container, false);
 
         return binding.getRoot();
@@ -42,12 +41,10 @@ public class DateInputFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Log.d("hejAdam","siema2");
 
         binding.buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("hejAdam", "siema3");
 
                 int year = binding.datePicker1.getYear();
                 int month = binding.datePicker1.getMonth();
