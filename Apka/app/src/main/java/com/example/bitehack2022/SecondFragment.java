@@ -104,11 +104,8 @@ public class SecondFragment extends Fragment {
             Log.d("DebugTAG", "in Activity Result");
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
-            ImageView imageView = new ImageView(getActivity());
-            imageView.setImageBitmap(imageBitmap);
 
             ((MainActivity)getActivity()).bitmap = (Bitmap) extras.get("data");
-            binding.favoritesGrid.addView(imageView);
             NavHostFragment.findNavController(SecondFragment.this)
                     .navigate(R.id.action_SecondFragment_to_DateInputFragment);
         }
@@ -119,5 +116,4 @@ public class SecondFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-
 }
