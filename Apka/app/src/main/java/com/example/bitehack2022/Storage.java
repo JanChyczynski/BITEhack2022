@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class Storage {
 
-//    private final static String DOMAIN = "https://wilga.pw:9000"; //mocked
+    //    private final static String DOMAIN = "https://wilga.pw:9000"; //mocked
     private final static String DOMAIN = "http:192.168.3.56:9000";
     private final ApiProxy apiProxy;
     private String accessToken;
@@ -26,27 +26,27 @@ public class Storage {
         return accessToken;
     }
 
-    public String registerFridge(){
+    public String registerFridge() {
         this.accessToken = apiProxy.getNewFridgeToken();
         return this.accessToken;
     }
 
-    public List<Product> getProducts(){
+    public List<Product> getProducts() {
 //        apiProxy.getProducts();
 
         return new ArrayList<>(productsCache);
     }
 
-    public boolean logToFridge(String newAccessToken){
+    public boolean logToFridge(String newAccessToken) {
         accessToken = newAccessToken;
         return true;
     }
 
-    public void addProduct(Product product){
+    public void addProduct(Product product) {
         productsCache.add(product); //mocked
     }
 
-    public void removeProduct(Product product){
+    public void removeProduct(Product product) {
         productsCache.remove(product); //mocked
     }
 }

@@ -49,9 +49,9 @@ public class DateInputFragment extends Fragment {
                 int year = binding.datePicker1.getYear();
                 int month = binding.datePicker1.getMonth();
                 int day = binding.datePicker1.getDayOfMonth();
-                Date date = new Date(year-1900, month, day);
-                Bitmap bitmap = ((MainActivity)getActivity()).bitmap;
-                Storage storage = ((MainActivity)getActivity()).storage;
+                Date date = new Date(year - 1900, month, day);
+                Bitmap bitmap = ((MainActivity) getActivity()).bitmap;
+                Storage storage = ((MainActivity) getActivity()).storage;
 
                 storage.addProduct(new Product(date, bitmap));
 

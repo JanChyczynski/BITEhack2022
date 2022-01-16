@@ -8,12 +8,11 @@
     tools:context=".DateInputFragment">
 
     <DatePicker
-        android:id = "@+id/date_picker1"
-        android:layout_height="wrap_content"
+        android:id="@+id/date_picker1"
         android:layout_width="wrap_content"
-        android:datePickerMode="spinner"
+        android:layout_height="wrap_content"
         android:calendarViewShown="false"
-    />
+        android:datePickerMode="spinner" />
 
 
     <Button

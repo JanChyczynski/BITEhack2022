@@ -1,5 +1,6 @@
 package com.example.bitehack2022;
 
+import android.annotation.SuppressLint;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 
@@ -32,6 +33,7 @@ public class SecondFragment extends Fragment {
     private FragmentSecondBinding binding;
     private Storage storage;
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
