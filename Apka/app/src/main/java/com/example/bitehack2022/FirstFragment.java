@@ -1,6 +1,7 @@
 package com.example.bitehack2022;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,8 @@ public class FirstFragment extends Fragment {
 
                 Toast.makeText(getActivity(), "First: "+accessToken, Toast.LENGTH_SHORT ).show();
 
+                Log.d("BLETAG", "doszło");
+
                 NavHostFragment.findNavController(FirstFragment.this)
                         .navigate(R.id.action_FirstFragment_to_SecondFragment);
 
@@ -51,17 +54,15 @@ public class FirstFragment extends Fragment {
             public void onClick(View view) {
                 String accessToken = binding.editText.getText().toString();
 
-
-                Toast.makeText(getActivity(), "Second: "+accessToken, Toast.LENGTH_SHORT ).show();
-
-                NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+                if (storage.logToFridge(accessToken)) {
+                    Toast.makeText(getActivity(), "Second: "+accessToken, Toast.LENGTH_SHORT ).show();
+                    NavHostFragment.findNavController(FirstFragment.this)
+                            .navigate(R.id.action_FirstFragment_to_SecondFragment);
+                }
             }
         });
     }
 
-//    @Override
-//    public void onAttach()
 
     @Override
     public void onDestroyView() {

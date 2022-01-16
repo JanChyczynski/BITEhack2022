@@ -1,6 +1,8 @@
 package com.example.bitehack2022;
 
+import android.media.Image;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -8,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -33,10 +36,56 @@ public class SecondFragment extends Fragment {
 
         storage = ((MainActivity) getActivity()).storage;
 
+        Log.d("BLETAG", "przed petla");
+        Log.d("BLETAG", "liczba produktów: "+storage.getProducts().size());
+
         for (Product product : storage.getProducts())
         {
+            LinearLayout layout = new LinearLayout(getActivity());
+            layout.setOrientation(LinearLayout.VERTICAL);
 
+            ImageView imageView = new ImageView(getActivity());
+            layout.addView(imageView);
+
+            TextView textView = new TextView(getActivity());
+            String month = Integer.toString(product.getExpirationDate().getMonth());
+            String date = Integer.toString(product.getExpirationDate().getDate());
+            textView.setText(date+"."+month);
+            layout.addView(textView);
+
+
+            Button btn1 = new Button(getActivity());
+            btn1.setText("Open");
+            btn1.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View view) {
+                    if (btn1.getText().equals("Open")) {
+                        // product.open()
+                        btn1.setText("Close");
+                    } else {
+                        // product.close()
+                        btn1.setText("Open");
+                    }
+                }
+            });
+            layout.addView(btn1);
+
+            Button btn2 = new Button(getActivity());
+            btn2.setText("remove");
+            layout.addView(btn2);
+//
+//            Button btn1 = new Button(getActivity());
+////            btn1.setGravity(Gravity.CENTER_HORIZONTAL);
+//            btn1.setText("Opened");
+//            constraintLayout.addView(btn1);
+//
+//            Button btn2 = new Button(getActivity());
+//            btn2.setText("Eaten");
+//            constraintLayout.addView(btn2);
+//
+            binding.favoritesGrid.addView(layout);
         }
+
+        Log.d("BLETAG", "po petli");
 
         for (int i = 0; i < 5; i++) {
             LinearLayout layout = new LinearLayout(getActivity());

@@ -1,6 +1,7 @@
 package com.example.bitehack2022;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -17,7 +18,15 @@ public class Storage {
 //    private List<Product> productsRemoveQueue;
 
     public Storage() {
+//        productsCache = new HashSet<>();
+
+        // mock
         productsCache = new HashSet<>();
+        for (int i = 0; i < 5; i++) {
+            Product p = new Product(new Date(122, 1, 16+i));
+            productsCache.add(p);
+        }
+
         apiProxy = new ApiProxy(DOMAIN);
     }
 
