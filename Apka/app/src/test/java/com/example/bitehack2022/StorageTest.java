@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import junit.framework.TestCase;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -34,5 +35,14 @@ public class StorageTest extends TestCase {
         }
 
         assertTrue(storage.getProducts().isEmpty());
+    }
+
+    public void testSortedGetProducts(){
+        Storage storage = new Storage();
+        for (int i = 0; i < 5; i++) {
+            storage.addProduct(new Product(new Date(2022-1900, 3-1, 14-i)));
+        }
+        System.out.println(Arrays.toString(storage.getProducts().stream().map(Product::getDaysToExpire).toArray()));
+//        isSorted
     }
 }

@@ -8,6 +8,9 @@ import android.util.Log;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -40,8 +43,11 @@ public class Storage {
 
     public List<Product> getProducts() {
 //        apiProxy.getProducts();
-
-        return new ArrayList<>(productsCache);
+        ArrayList<Product> products = new ArrayList<>(productsCache);
+        Collections.sort(products, new ProductComparator());
+//        Collections.sort(products, Comparator.comparing(Product::getDaysToExpire).thenComparing(Product::hashCode)));
+//        products.sort(Comparator.comparing(Product::getDaysToExpire).thenComparing(Product::hashCode));
+        return products;
     }
 
     public boolean logToFridge(String newAccessToken) {
