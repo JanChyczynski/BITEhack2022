@@ -25,11 +25,22 @@ public class Product {
         this.bitmap = bitmap;
     }
 
+    public static Date currentDay() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+
+        return calendar.getTime();
+    }
+
     public long getDaysToExpire(){
-        long millisToExpire = expirationDate.getTime() - new Date().getTime();
+        Date currentDay = currentDay();
+        long millisToExpire = expirationDate.getTime() - currentDay.getTime();// + 1000*60*60*24-1;
         long daysToExpire = TimeUnit.DAYS.convert(millisToExpire, TimeUnit.MILLISECONDS);
         if(openedSpoilageDate != null){
-            long millisToSpoil = openedSpoilageDate.getTime() - new Date().getTime();
+            long millisToSpoil = openedSpoilageDate.getTime() - currentDay.getTime();
             long daysToSpoil = TimeUnit.DAYS.convert(millisToSpoil, TimeUnit.MILLISECONDS);
             daysToExpire = Math.min(daysToExpire, daysToSpoil);
         }
@@ -58,9 +69,9 @@ public class Product {
 
     public void open(int daysToSpoil){
         isOpened = true;
-        Date currentDate = new Date();
+//        Date currentDate = new Date();
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(currentDate);
+        calendar.setTime(currentDay());
         calendar.add(Calendar.DATE, daysToSpoil);
         openedSpoilageDate = calendar.getTime();
     }
