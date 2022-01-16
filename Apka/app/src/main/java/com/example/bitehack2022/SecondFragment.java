@@ -81,15 +81,15 @@ public class SecondFragment extends Fragment {
             LinearLayout buttonLayout = new LinearLayout(getActivity());
             buttonLayout.setOrientation(LinearLayout.VERTICAL);
             Button btn1 = new Button(getActivity());
-            btn1.setText("Open");
+            btn1.setText("Mark Opened");
             btn1.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
-                    if (btn1.getText().equals("Open")) {
+                    if (btn1.getText().equals("Mark Opened")) {
                         // product.open()
-                        btn1.setText("Close");
+                        btn1.setText("Mark Closed");
                     } else {
                         // product.close()
-                        btn1.setText("Open");
+                        btn1.setText("Mark Opened");
                     }
                 }
             });
