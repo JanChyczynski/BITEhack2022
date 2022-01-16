@@ -52,10 +52,10 @@ public class SecondFragment extends Fragment {
             imageView.setImageBitmap(product.getBitmap());
             DisplayMetrics displayMetrics = new DisplayMetrics();
             getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-            imageView.setMinimumWidth(displayMetrics.widthPixels/4);
-            imageView.setMinimumHeight(displayMetrics.heightPixels/4);
+            imageView.setMinimumWidth(displayMetrics.widthPixels / 4);
+            imageView.setMinimumHeight(displayMetrics.heightPixels / 4);
             layout.addView(imageView);
-            layout.setPadding((displayMetrics.widthPixels/4-20)/6,(displayMetrics.heightPixels/4-20)/6,0,0);
+            layout.setPadding((displayMetrics.widthPixels / 4 - 20) / 6, (displayMetrics.heightPixels / 4 - 20) / 6, 0, 0);
             layout.setGravity(Gravity.CENTER_HORIZONTAL);
 
             LinearLayout textLayout = new LinearLayout(getActivity());
@@ -63,6 +63,9 @@ public class SecondFragment extends Fragment {
 
             TextView textView1 = new TextView(getActivity());
             textView1.setText("Will spoil");
+            if (product.getDaysToExpire() < 0) {
+                textView1.setText("Expired");
+            }
             textView1.setGravity(Gravity.CENTER_HORIZONTAL);
             textLayout.addView(textView1);
 
@@ -88,13 +91,13 @@ public class SecondFragment extends Fragment {
                     }
                 }
             });
-            btn1.setMaxWidth(displayMetrics.widthPixels/8);
+            btn1.setMaxWidth(displayMetrics.widthPixels / 8);
             btn1.setTextSize((float) 10.0);
             buttonLayout.addView(btn1);
 
             Button btn2 = new Button(getActivity());
             btn2.setText("remove");
-            btn2.setMaxWidth(displayMetrics.widthPixels/8);
+            btn2.setMaxWidth(displayMetrics.widthPixels / 8);
             btn2.setTextSize((float) 10.0);
             buttonLayout.addView(btn2);
             layout.addView(buttonLayout);

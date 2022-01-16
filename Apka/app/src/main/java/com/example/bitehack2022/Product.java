@@ -54,6 +54,12 @@ public class Product {
         if (getDaysToExpire()==1){
             return "tomorrow";
         }
+        if (getDaysToExpire()<0){
+            if (getDaysToExpire()==-1){
+                return "yesterday";
+            }
+            return (-getDaysToExpire())+" days ago";
+        }
         return "in "+getDaysToExpire()+" days";
     }
 
