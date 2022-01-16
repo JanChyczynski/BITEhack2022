@@ -15,6 +15,18 @@
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/DateInputFragment"
+        android:name="com.example.bitehack2022.DateInputFragment"
+        android:label="@string/date_input_label"
+        tools:layout="@layout/fragment_date_input">
+        <action
+            android:id="@+id/action_DateInputFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment"
+        />
+    </fragment>
+
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.example.bitehack2022.SecondFragment"
@@ -24,5 +36,8 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_SecondFragment_to_DateInputFragment"
+            app:destination="@id/DateInputFragment" />
     </fragment>
 </navigation>

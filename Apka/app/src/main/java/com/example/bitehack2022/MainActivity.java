@@ -1,5 +1,6 @@
 package com.example.bitehack2022;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -22,11 +23,14 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
+    public Storage storage;
+    public Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        storage = new Storage();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
