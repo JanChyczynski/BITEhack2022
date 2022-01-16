@@ -39,8 +39,6 @@ public class FirstFragment extends Fragment {
             public void onClick(View view) {
                 String accessToken = storage.registerFridge();
 
-                Toast.makeText(getActivity(), "First: "+accessToken, Toast.LENGTH_SHORT ).show();
-
                 Log.d("BLETAG", "doszło");
 
                 NavHostFragment.findNavController(FirstFragment.this)
@@ -55,7 +53,6 @@ public class FirstFragment extends Fragment {
                 String accessToken = binding.editText.getText().toString();
 
                 if (storage.logToFridge(accessToken)) {
-                    Toast.makeText(getActivity(), "Second: "+accessToken, Toast.LENGTH_SHORT ).show();
                     NavHostFragment.findNavController(FirstFragment.this)
                             .navigate(R.id.action_FirstFragment_to_SecondFragment);
                 }
