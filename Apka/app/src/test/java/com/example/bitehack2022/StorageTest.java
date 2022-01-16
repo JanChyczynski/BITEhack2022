@@ -1,5 +1,7 @@
 package com.example.bitehack2022;
 
+import android.graphics.Bitmap;
+
 import junit.framework.TestCase;
 
 import java.util.ArrayList;
