@@ -1,6 +1,7 @@
 package com.example.bitehack2022;
 
 import android.app.DatePickerDialog;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -19,6 +20,8 @@ import android.widget.DatePicker;
 import com.example.bitehack2022.databinding.FragmentDateInputBinding;
 import com.example.bitehack2022.databinding.FragmentSecondBinding;
 
+import java.util.Date;
+
 public class DateInputFragment extends Fragment {
 
     private FragmentDateInputBinding binding;
@@ -26,12 +29,6 @@ public class DateInputFragment extends Fragment {
     public DateInputFragment() {
         // Required empty public constructor
     }
-
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        Log.d("hejAdam","siema0");
-//        super.onCreate(savedInstanceState);
-//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,6 +48,16 @@ public class DateInputFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Log.d("hejAdam", "siema3");
+
+                int year = binding.datePicker1.getYear();
+                int month = binding.datePicker1.getMonth();
+                int day = binding.datePicker1.getDayOfMonth();
+                Date date = new Date(year-1900, month, day);
+                Bitmap bitmap = ((MainActivity)getActivity()).bitmap;
+                Storage storage = ((MainActivity)getActivity()).storage;
+
+                storage.addProduct(new Product(date, bitmap));
+
                 NavHostFragment.findNavController(DateInputFragment.this)
                         .navigate(R.id.action_DateInputFragment_to_SecondFragment);
             }
