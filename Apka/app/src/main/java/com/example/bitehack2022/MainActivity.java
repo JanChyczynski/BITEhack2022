@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         storage = new Storage();
         // mock
-        storage.loadMockProducts(getApplicationContext());
+        // storage.loadMockProducts(getApplicationContext());
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
