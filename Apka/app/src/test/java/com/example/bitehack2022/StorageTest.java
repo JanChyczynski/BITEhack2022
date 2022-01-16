@@ -21,7 +21,7 @@ public class StorageTest extends TestCase {
         List<Product> products = new ArrayList<>();
         for (int i = 0; i < productsNumber; i++) {
 
-            Product product = new Product(new Date(2022,12,30));
+            Product product = new Product(new Date(2022-1900,12,30));
             products.add(product);
             storage.addProduct(product);
         }

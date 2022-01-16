@@ -1,10 +1,13 @@
 package com.example.bitehack2022;
 
+import static java.util.Objects.isNull;
+
 import android.graphics.Bitmap;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 public class Product {
     private Date expirationDate;
@@ -20,6 +23,17 @@ public class Product {
     public Product(Date expirationDate, Bitmap bitmap) {
         this(expirationDate);
         this.bitmap = bitmap;
+    }
+
+    public long getDaysToExpire(){
+        long millisToExpire = expirationDate.getTime() - new Date().getTime();
+        long daysToExpire = TimeUnit.DAYS.convert(millisToExpire, TimeUnit.MILLISECONDS);
+        if(openedSpoilageDate != null){
+            long millisToSpoil = openedSpoilageDate.getTime() - new Date().getTime();
+            long daysToSpoil = TimeUnit.DAYS.convert(millisToSpoil, TimeUnit.MILLISECONDS);
+            daysToExpire = Math.min(daysToExpire, daysToSpoil);
+        }
+        return daysToExpire;
     }
 
     public Date getExpirationDate() {
