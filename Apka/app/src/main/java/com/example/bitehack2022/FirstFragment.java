@@ -39,8 +39,10 @@ public class FirstFragment extends Fragment {
                 String accessToken = storage.registerFridge();
 
                 Toast.makeText(getActivity(), "First: "+accessToken, Toast.LENGTH_SHORT ).show();
+
                 NavHostFragment.findNavController(FirstFragment.this)
                         .navigate(R.id.action_FirstFragment_to_SecondFragment);
+
             }
         });
 
@@ -48,6 +50,7 @@ public class FirstFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 String accessToken = binding.editText.getText().toString();
+
 
                 Toast.makeText(getActivity(), "Second: "+accessToken, Toast.LENGTH_SHORT ).show();
 
